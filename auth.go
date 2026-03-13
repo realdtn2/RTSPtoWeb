@@ -41,7 +41,8 @@ func initAuth(router *gin.Engine) {
 		HttpOnly: true,
 		Secure:   Storage.ServerHTTPS(),
 		SameSite: http.SameSiteLaxMode,
-		MaxAge:   int((24 * time.Hour).Seconds()),
+		// Effectively "forever" until logout or cookie cleared (10 years).
+		MaxAge: int((10 * 365 * 24 * time.Hour).Seconds()),
 	})
 
 	router.Use(sessions.Sessions(sessionCookieName, store))
