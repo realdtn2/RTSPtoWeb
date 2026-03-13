@@ -131,9 +131,6 @@ function goRequest(method, uuid, data) {
     url: path,
     type: type,
     dataType: 'json',
-    beforeSend: function(xhr) {
-      xhr.setRequestHeader("Authorization", "Basic " + btoa("demo:demo"));
-    },
     success: function(response) {
       goRequestHandle(method, response, uuid);
     },
